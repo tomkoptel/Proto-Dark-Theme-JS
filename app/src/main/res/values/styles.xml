@@ -1,0 +1,8 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.JasperDark">
+        <item name="android:windowBackground">@drawable/ic_resources_background</item>
+    </style>
+
+</resources>

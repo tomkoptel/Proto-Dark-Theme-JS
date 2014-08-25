@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Prototype Dark Theme Jasper</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="switch_view">Switch view</string>
+    <string name="title_activity_repositories">Repositories</string>
+    <string name="title_activity_libraries">Libraries</string>
+    <string name="title_activity_favorites">Favorites</string>
+    <string name="title_activity_save_report">Save Report</string>
+    <string name="title_activity_server_profiles">Server Profiles</string>
+
+</resources>
