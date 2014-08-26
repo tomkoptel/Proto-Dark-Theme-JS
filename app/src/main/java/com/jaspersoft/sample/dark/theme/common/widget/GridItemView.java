@@ -20,16 +20,16 @@ public class GridItemView extends FrameLayout {
     protected TextView mTitleTxt;
     @ViewById(android.R.id.text2)
     protected TextView mSubTitle;
+    @DimensionPixelSizeRes(R.dimen.grid_item_height)
+    protected int mHeight;
 
-    @DimensionPixelSizeRes(R.dimen.resource_cnt_padding)
-    protected int mPadding;
 
     public GridItemView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public GridItemView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, R.attr.gridLayoutStyle);
     }
 
     public GridItemView(Context context, AttributeSet attrs, int defStyle) {
@@ -39,10 +39,8 @@ public class GridItemView extends FrameLayout {
     @AfterViews
     final void init() {
         AbsListView.LayoutParams params = new AbsListView.LayoutParams(
-                LayoutParams.MATCH_PARENT,
-                LayoutParams.MATCH_PARENT);
+                AbsListView.LayoutParams.MATCH_PARENT, mHeight);
         setLayoutParams(params);
-        setPadding(mPadding, mPadding, mPadding, mPadding);
     }
 
     public void setTitle(CharSequence title) {
@@ -50,7 +48,9 @@ public class GridItemView extends FrameLayout {
     }
 
     public void setSubTitle(CharSequence subTitle) {
-        mSubTitle.setText(subTitle);
+        if (mSubTitle != null) {
+            mSubTitle.setText(subTitle);
+        }
     }
 
 }

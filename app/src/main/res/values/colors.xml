@@ -2,5 +2,7 @@
 
 <resources>
     <color name="js_blue_50">#500480ba</color>
+    <color name="js_grey">#7d7d7d</color>
+    <color name="js_light_grey">#949494</color>
 
 </resources>

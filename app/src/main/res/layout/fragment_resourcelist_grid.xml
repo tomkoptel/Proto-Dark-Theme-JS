@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.jaspersoft.sample.dark.theme.common.ResourceListFragment">
+    android:layout_height="match_parent">
 
     <GridView
+        style="@style/grid.layout"
         android:id="@android:id/list"
+        android:verticalSpacing="16dp"
+        android:horizontalSpacing="16dp"
         android:drawSelectorOnTop="true"
-        android:listSelector="@android:color/transparent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="2" />
+        android:layout_height="match_parent"/>
 
     <TextView
         android:id="@android:id/empty"

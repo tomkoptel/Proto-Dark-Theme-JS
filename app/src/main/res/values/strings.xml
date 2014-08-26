@@ -10,5 +10,7 @@
     <string name="title_activity_favorites">Favorites</string>
     <string name="title_activity_save_report">Save Report</string>
     <string name="title_activity_server_profiles">Server Profiles</string>
+    <string name="favorites">Favorites</string>
+    <string name="filters">Filter</string>
 
 </resources>

@@ -2,8 +2,14 @@
 
 <resources>
 
+    <declare-styleable name="AppTheme">
+        <attr name="listLayoutStyle" format="reference" />
+        <attr name="gridLayoutStyle" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="AutoLayerLayout">
         <attr name="foregroundSelector" format="integer" />
     </declare-styleable>
+
 
 </resources>

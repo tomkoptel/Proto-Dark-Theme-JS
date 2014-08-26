@@ -20,7 +20,7 @@ public class DummyFactory {
         for (int i = 0; i < 100; i++) {
             addReportItem(DummyItem.createBuilder()
                             .setTitle(i + ". Geographic Results by Segment Report")
-                            .setSubTitle("/Reports/" + i  +"._Geographic_Results_by_Segment_Report")
+                            .setSubTitle("Reports/" + i  +"._Geographic_Results_by_Segment_Report")
                             .build()
             );
         }

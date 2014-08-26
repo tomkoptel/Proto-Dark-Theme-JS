@@ -1,6 +1,8 @@
 package com.jaspersoft.sample.dark.theme;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +27,17 @@ public class LibrariesActivity extends Activity {
         mStateHelper.restoreState(savedInstanceState);
         mStateHelper.switchViewStates(
                 getFragmentManager(), ResourceType.REPORT);
+
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+    }
+
+    @OptionsItem(android.R.id.home)
+    final void showHome() {
+        HomeActivity_.intent(this).flags(Intent.FLAG_ACTIVITY_CLEAR_TOP).start();
     }
 
     @Override

@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="grid.layout">
+        <item name="android:numColumns">3</item>
+    </style>
+
+</resources>

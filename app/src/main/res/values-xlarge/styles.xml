@@ -1,42 +1,31 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.JasperDark">
-        <item name="android:windowBackground">@drawable/ic_resources_background</item>
-        <item name="listLayoutStyle">@style/list.item.layout</item>
-        <item name="gridLayoutStyle">@style/grid.item.layout</item>
-    </style>
 
     <style name="list"/>
 
     <style name="list.item"/>
 
     <style name="list.item.layout">
-
         <item name="android:background">@drawable/ab_stacked_solid_box</item>
     </style>
 
     <style name="list.item.title">
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLargeInverse</item>
+        <item name="android:textSize">32sp</item>
         <item name="android:singleLine">true</item>
     </style>
 
     <style name="list.item.subTitle">
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceSmallInverse</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:singleLine">true</item>
     </style>
-
-
 
     <style name="grid"/>
 
     <style name="grid.item"/>
-
-    <style name="grid.layout">
-        <item name="android:numColumns">2</item>
-    </style>
 
     <style name="grid.item.layout">
         <item name="android:layout_width">150dp</item>
@@ -44,19 +33,23 @@
         <item name="android:background">@drawable/ab_stacked_solid_box</item>
     </style>
 
+    <style name="grid.layout">
+        <item name="android:numColumns">3</item>
+    </style>
+
+
     <style name="grid.item.context">
         <item name="android:padding">16dp</item>
     </style>
 
     <style name="grid.item.title">
-        <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLargeInverse</item>
         <item name="android:maxLines">1</item>
     </style>
 
     <style name="grid.item.subTitle">
-        <item name="android:textAppearance">?android:attr/textAppearanceSmallInverse</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
         <item name="android:maxLines">2</item>
     </style>
-
 
 </resources>
