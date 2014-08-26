@@ -31,6 +31,9 @@ public class ResourceGridAdapter extends ArrayAdapter<DummyItem> {
         if (item.getType() == ResourceType.FOLDER) {
             itemView.setTimeTamp(item.getTimestamp());
         }
+        if (item.getType() == ResourceType.SAVED) {
+            itemView.setMisc(item.getFileSize());
+        }
 
         return itemView;
     }

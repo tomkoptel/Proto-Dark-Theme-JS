@@ -49,7 +49,15 @@
                 android:id="@+id/timestampStub"
                 android:layout_below="@android:id/text2"
                 android:inflatedId="@+id/timestamp"
-                android:layout="@layout/resource_timestamp"
+                android:layout="@layout/resource_metadata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ViewStub
+                android:id="@+id/miscStub"
+                android:layout_below="@android:id/text2"
+                android:inflatedId="@+id/misc"
+                android:layout="@layout/resource_metadata"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

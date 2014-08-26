@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.jaspersoft.sample.dark.theme.common.dummy.ResourceFactoryHelper;
 import com.jaspersoft.sample.dark.theme.util.StateViewHelper;
 
 import org.androidannotations.annotations.Bean;
@@ -24,9 +25,18 @@ public class FavoritesActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mStateHelper.setResourceFlag(ResourceType.REPORT.getFlag() | ResourceType.DASHBOARD.getFlag());
-        mStateHelper.setSize(5);
-        mStateHelper.setShuffle(true);
+
+        if (savedInstanceState == null) {
+            int flag = ResourceType.REPORT.getFlag() | ResourceType.DASHBOARD.getFlag();
+            mStateHelper.setItems(
+                    ResourceFactoryHelper.create()
+                            .typeFlag(flag)
+                            .size(5)
+                            .shuffle(true)
+                            .populate()
+            );
+        }
+
         mStateHelper.restoreState(savedInstanceState);
         mStateHelper.switchViewStates(getFragmentManager());
 

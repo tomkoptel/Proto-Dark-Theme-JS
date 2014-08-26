@@ -7,22 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jaspersoft.sample.dark.theme.R;
-import com.jaspersoft.sample.dark.theme.common.dummy.ResourceFactoryHelper;
+import com.jaspersoft.sample.dark.theme.common.dummy.DummyItem;
 import com.jaspersoft.sample.dark.theme.common.widget.ResourceListAdapter;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
 
+import java.util.ArrayList;
+
 @EFragment
 public class ResourceListFragment extends ListFragment {
 
     @FragmentArg
-    protected int resourceFlag;
-    @FragmentArg
-    protected int size;
-    @FragmentArg
-    protected boolean shuffle;
+    protected ArrayList<DummyItem> items;
 
     @Bean
     protected ResourceListAdapter mAdapter;
@@ -41,13 +39,7 @@ public class ResourceListFragment extends ListFragment {
 
         if (savedInstanceState == null) {
             setListAdapter(mAdapter);
-            mAdapter.addAll(
-                    ResourceFactoryHelper.create()
-                            .setTypeFlag(resourceFlag)
-                            .setSize(size)
-                            .setShuffle(shuffle)
-                            .populate()
-            );
+            mAdapter.addAll(items);
         }
     }
 

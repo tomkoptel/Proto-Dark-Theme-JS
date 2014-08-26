@@ -23,8 +23,11 @@ public class ListItemView extends RelativeLayout {
     protected TextView mSubTitle;
     @ViewById(R.id.timestampStub)
     protected ViewStub mTimestampStub;
+    @ViewById(R.id.miscStub)
+    protected ViewStub mMiscStub;
 
     protected TextView mTimestampTxt;
+    protected TextView mMiscTxt;
 
     @DimensionPixelSizeRes(R.dimen.list_item_height)
     protected int mHeight;
@@ -62,6 +65,20 @@ public class ListItemView extends RelativeLayout {
                 mTimestampTxt = (TextView) mTimestampStub.inflate();
             }
             mTimestampTxt.setText(timestamp);
+        }
+    }
+
+    public void setMisc(CharSequence misc) {
+        if (mMiscStub != null) {
+            if (mMiscTxt == null) {
+                mMiscTxt = (TextView) mMiscStub.inflate();
+            }
+            mMiscTxt.setText(misc);
+
+            RelativeLayout.LayoutParams params = (LayoutParams) mSubTitle.getLayoutParams();
+            params.addRule(RelativeLayout.LEFT_OF, mMiscTxt.getId());
+            params.addRule(RelativeLayout.START_OF, mMiscTxt.getId());
+            mSubTitle.setLayoutParams(params);
         }
     }
 

@@ -23,8 +23,11 @@ public class GridItemView extends FrameLayout {
     protected TextView mSubTitle;
     @ViewById(R.id.timestampStub)
     protected ViewStub mTimestampStub;
+    @ViewById(R.id.miscStub)
+    protected ViewStub mMiscStub;
 
     protected TextView mTimestampTxt;
+    protected TextView mMiscTxt;
 
     @DimensionPixelSizeRes(R.dimen.grid_item_height)
     protected int mHeight;
@@ -64,6 +67,15 @@ public class GridItemView extends FrameLayout {
                 mTimestampTxt = (TextView) mTimestampStub.inflate();
             }
             mTimestampTxt.setText(timestamp);
+        }
+    }
+
+    public void setMisc(CharSequence misc) {
+        if (mMiscStub != null) {
+            if (mMiscTxt == null) {
+                mMiscTxt = (TextView) mMiscStub.inflate();
+            }
+            mMiscTxt.setText(misc);
         }
     }
 

@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.jaspersoft.sample.dark.theme.FavoritesActivity" >
+
+    <item
+        android:id="@+id/switchLayout"
+        android:icon="@drawable/ic_collections_view_as_grid"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/switch_view" />
+
+</menu>

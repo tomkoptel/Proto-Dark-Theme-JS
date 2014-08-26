@@ -15,10 +15,9 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 
-
 @EActivity
-@OptionsMenu(R.menu.repositories)
-public class RepositoriesActivity extends Activity {
+@OptionsMenu(R.menu.saved_items)
+public class SavedItemsActivity extends Activity {
 
     @Bean
     protected StateViewHelper mStateHelper;
@@ -30,8 +29,9 @@ public class RepositoriesActivity extends Activity {
         if (savedInstanceState == null) {
             mStateHelper.setItems(
                     ResourceFactoryHelper.create()
-                            .typeFlag(ResourceType.FOLDER.getFlag())
+                            .typeFlag(ResourceType.SAVED.getFlag())
                             .size(15)
+                            .shuffle(true)
                             .populate()
             );
         }
@@ -43,6 +43,7 @@ public class RepositoriesActivity extends Activity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
     }
 
     @OptionsItem(android.R.id.home)
@@ -69,5 +70,4 @@ public class RepositoriesActivity extends Activity {
         super.onSaveInstanceState(outState);
         mStateHelper.saveState(outState);
     }
-
 }

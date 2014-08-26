@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Helper class for providing sample title for user interfaces created by
@@ -15,6 +16,7 @@ public class DummyFactory {
     public static List<DummyItem> REPORT_ITEMS = new ArrayList<>();
     public static List<DummyItem> DASHBOARD_ITEMS = new ArrayList<>();
     public static List<DummyItem> FOLDER_ITEMS = new ArrayList<>();
+    public static List<DummyItem> SAVED_ITEMS = new ArrayList<>();
 
     static {
         for (int i = 0; i < 100; i++) {
@@ -38,10 +40,31 @@ public class DummyFactory {
         for (int i = 0; i < 100; i++) {
             addDashboardItem(DummyItem.createBuilder(ResourceType.DASHBOARD)
                             .setTitle(i + ". Supermart Dashboard")
-                            .setSubTitle("Dashboards/" + i  +".Supermart_Dashboard")
+                            .setSubTitle("Dashboards/" + i + ".Supermart_Dashboard")
                             .build()
             );
         }
+        for (int i = 0; i < 100; i++) {
+            addSavedItem(DummyItem.createBuilder(ResourceType.SAVED)
+                            .setTitle(i + ". Saved Report")
+                            .setSubTitle("Reports/" + i + "._Geographic_Results_by_Segment_Report")
+                            .setFileSzie(randInt(0, 100) + " KB")
+                            .build()
+            );
+        }
+    }
+
+    public static int randInt(int min, int max) {
+
+        // NOTE: Usually this should be a field rather than a method
+        // variable so that it is not re-seeded every call.
+        Random rand = new Random();
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
     }
 
     private static void addReportItem(DummyItem item) {
@@ -54,6 +77,10 @@ public class DummyFactory {
 
     private static void addDashboardItem(DummyItem item) {
         DASHBOARD_ITEMS.add(item);
+    }
+
+    private static void addSavedItem(DummyItem item) {
+        SAVED_ITEMS.add(item);
     }
 
 }

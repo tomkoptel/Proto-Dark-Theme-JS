@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.jaspersoft.sample.dark.theme.common.dummy.ResourceFactoryHelper;
 import com.jaspersoft.sample.dark.theme.util.StateViewHelper;
 
 import org.androidannotations.annotations.Bean;
@@ -24,8 +25,16 @@ public class LibrariesActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mStateHelper.setResourceFlag(ResourceType.REPORT.getFlag());
-        mStateHelper.setSize(10);
+
+        if (savedInstanceState == null) {
+            mStateHelper.setItems(
+                    ResourceFactoryHelper.create()
+                            .typeFlag(ResourceType.REPORT.getFlag())
+                            .size(10)
+                            .populate()
+            );
+        }
+
         mStateHelper.restoreState(savedInstanceState);
         mStateHelper.switchViewStates(getFragmentManager());
 

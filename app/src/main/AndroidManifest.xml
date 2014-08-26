@@ -31,8 +31,8 @@
             android:label="@string/title_activity_favorites"/>
 
         <activity
-            android:name=".SaveReportActivity_"
-            android:label="@string/title_activity_save_report"/>
+            android:name=".SavedItemsActivity_"
+            android:label="@string/title_activity_saved_items"/>
 
         <activity
             android:name=".ServerProfilesActivity_"

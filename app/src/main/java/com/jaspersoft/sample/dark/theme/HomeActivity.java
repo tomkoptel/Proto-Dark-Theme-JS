@@ -25,7 +25,7 @@ public class HomeActivity extends Activity {
 
     @Click
     final void showSavedItems() {
-
+        SavedItemsActivity_.intent(this).start();
     }
 
 }

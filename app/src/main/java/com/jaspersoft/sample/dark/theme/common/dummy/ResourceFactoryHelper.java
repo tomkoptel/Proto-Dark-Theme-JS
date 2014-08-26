@@ -4,7 +4,6 @@ import com.jaspersoft.sample.dark.theme.ResourceType;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 public class ResourceFactoryHelper {
@@ -18,8 +17,8 @@ public class ResourceFactoryHelper {
         this.shuffle = shuffle;
     }
 
-    public List<DummyItem> generateItems() {
-        List<DummyItem> items = new ArrayList<>();
+    public ArrayList<DummyItem> generateItems() {
+        ArrayList<DummyItem> items = new ArrayList<>();
 
         if ((typeFlag & ResourceType.FOLDER.getFlag()) == ResourceType.FOLDER.getFlag()) {
             items.addAll(DummyFactory.FOLDER_ITEMS);
@@ -33,13 +32,17 @@ public class ResourceFactoryHelper {
             items.addAll(DummyFactory.DASHBOARD_ITEMS);
         }
 
+        if ((typeFlag & ResourceType.SAVED.getFlag()) == ResourceType.SAVED.getFlag()) {
+            items.addAll(DummyFactory.SAVED_ITEMS);
+        }
+
         if (shuffle) {
             long seed = System.nanoTime();
             Collections.shuffle(items, new Random(seed));
         }
 
         if (size > 0) {
-            return items.subList(0, size - 1);
+            return new ArrayList<>(items.subList(0, size - 1));
         }
 
         return items;
@@ -54,23 +57,23 @@ public class ResourceFactoryHelper {
         private int size;
         private boolean shuffle;
 
-        public Builder setTypeFlag(int typeFlag) {
+        public Builder typeFlag(int typeFlag) {
             this.typeFlag = typeFlag;
             return this;
         }
 
-        public Builder setSize(int size) {
+        public Builder size(int size) {
             this.size = size;
             return this;
         }
 
-        public Builder setShuffle(boolean shuffle) {
+        public Builder shuffle(boolean shuffle) {
             this.shuffle = shuffle;
             return this;
         }
 
 
-        public List<DummyItem> populate() {
+        public ArrayList<DummyItem> populate() {
             return new ResourceFactoryHelper(typeFlag, size, shuffle).generateItems();
         }
     }

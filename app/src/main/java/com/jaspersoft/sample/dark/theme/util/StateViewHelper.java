@@ -8,12 +8,16 @@ import android.view.MenuItem;
 import com.jaspersoft.sample.dark.theme.R;
 import com.jaspersoft.sample.dark.theme.common.ResourceGridFragment_;
 import com.jaspersoft.sample.dark.theme.common.ResourceListFragment_;
+import com.jaspersoft.sample.dark.theme.common.dummy.DummyItem;
 
 import org.androidannotations.annotations.EBean;
+
+import java.util.ArrayList;
 
 @EBean
 public class StateViewHelper {
     private static final String KEY_VIEW_STATE = "VIEW_STATE";
+    private static final String KEY_ITEMS = "ITEMS";
 
     private static final int NO_STATE = -1;
     private static final int SHOW_GRID = 1;
@@ -21,9 +25,7 @@ public class StateViewHelper {
 
     protected int mViewState = SHOW_GRID;
 
-    protected int resourceFlag;
-    protected int size;
-    protected boolean shuffle;
+    private ArrayList<DummyItem> items;
 
     public void toggleIconState(MenuItem item) {
         if (mViewState == SHOW_GRID) {
@@ -39,32 +41,28 @@ public class StateViewHelper {
         Fragment fragment;
         if (mViewState == SHOW_GRID) {
             fragment = ResourceListFragment_.builder()
-                    .resourceFlag(resourceFlag)
-                    .size(size)
-                    .shuffle(shuffle)
-                    .build();
+                    .items(items).build();
         } else {
             fragment = ResourceGridFragment_.builder()
-                    .resourceFlag(resourceFlag)
-                    .size(size)
-                    .shuffle(shuffle)
-                    .build();
+                    .items(items).build();
         }
         manager.beginTransaction()
                 .setCustomAnimations(
-                R.animator.card_flip_right_in, R.animator.card_flip_right_out,
-                R.animator.card_flip_left_in, R.animator.card_flip_left_out)
+                        R.animator.card_flip_right_in, R.animator.card_flip_right_out,
+                        R.animator.card_flip_left_in, R.animator.card_flip_left_out)
                 .replace(android.R.id.content, fragment)
                 .commit();
     }
 
     public void saveState(Bundle outState) {
         outState.putInt(KEY_VIEW_STATE, mViewState);
+        outState.putParcelableArrayList(KEY_ITEMS, items);
     }
 
     public void restoreState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             mViewState = savedInstanceState.getInt(KEY_VIEW_STATE, SHOW_GRID);
+            items = savedInstanceState.getParcelableArrayList(KEY_ITEMS);
         }
     }
 
@@ -76,15 +74,8 @@ public class StateViewHelper {
         }
     }
 
-    public void setResourceFlag(int resourceFlag) {
-        this.resourceFlag = resourceFlag;
+    public void setItems(ArrayList<DummyItem> items) {
+        this.items = items;
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public void setShuffle(boolean shuffle) {
-        this.shuffle = shuffle;
-    }
 }

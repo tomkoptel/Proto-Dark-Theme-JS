@@ -1,52 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
 
     <ImageView
         android:id="@+id/image"
-        android:layout_height="match_parent"
         android:layout_width="@dimen/list_item_height"
-        android:scaleType="centerCrop"
+        android:layout_height="match_parent"
         android:layout_marginRight="16dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/js_gradient" />
 
     <TextView
         android:id="@android:id/text1"
         style="@style/list.item.title"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/list_label_light_grey"
-        android:ellipsize="end"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
         android:layout_toEndOf="@+id/image"
         android:layout_toRightOf="@+id/image"
+        android:ellipsize="end"
+        android:textColor="@color/list_label_light_grey"
         tools:text="Large Text" />
 
     <TextView
         android:id="@android:id/text2"
         style="@style/list.item.subTitle"
-        android:layout_marginBottom="8dp"
-        android:textColor="@color/list_label_grey"
-        android:ellipsize="end"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@android:id/text1"
+        android:layout_marginBottom="8dp"
         android:layout_toEndOf="@+id/image"
+        android:layout_toLeftOf="@+id/miscStub"
         android:layout_toRightOf="@+id/image"
+        android:layout_toStartOf="@+id/miscStub"
+        android:ellipsize="end"
+        android:textColor="@color/list_label_grey"
         tools:text="Small Text" />
 
     <ViewStub
         android:id="@+id/timestampStub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
         android:layout_toLeftOf="@android:id/text1"
         android:inflatedId="@+id/timestamp"
-        android:layout="@layout/resource_timestamp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout="@layout/resource_metadata" />
 
-</merge>
+    <ViewStub
+        android:id="@+id/miscStub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:inflatedId="@+id/misc"
+        android:layout="@layout/resource_metadata" />
+
+</RelativeLayout>
