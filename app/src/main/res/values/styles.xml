@@ -17,18 +17,19 @@
     </style>
 
     <style name="list.item.title">
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
         <item name="android:singleLine">true</item>
     </style>
 
     <style name="list.item.subTitle">
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">?android:attr/textAppearanceSmallInverse</item>
         <item name="android:singleLine">true</item>
     </style>
 
-
+   <style name="list.item.timestamp">
+        <item name="android:textAppearance">?android:attr/textAppearanceSmallInverse</item>
+        <item name="android:singleLine">true</item>
+    </style>
 
     <style name="grid"/>
 

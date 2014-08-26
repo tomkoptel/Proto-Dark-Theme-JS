@@ -1,6 +1,8 @@
 package com.jaspersoft.sample.dark.theme.common.dummy;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +23,17 @@ public class DummyFactory {
             addReportItem(DummyItem.createBuilder()
                             .setTitle(i + ". Geographic Results by Segment Report")
                             .setSubTitle("Reports/" + i  +"._Geographic_Results_by_Segment_Report")
+                            .build()
+            );
+        }
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy");
+        for (int i = 0; i < 100; i++) {
+            calendar.add(Calendar.DAY_OF_YEAR, (i * -1));
+            addFolderItem(DummyItem.createBuilder()
+                            .setTitle(i + ". Folder")
+                            .setSubTitle("/Folder" + i)
+                            .setTimestamp(sdf.format(calendar.getTime()))
                             .build()
             );
         }

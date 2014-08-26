@@ -5,10 +5,12 @@ import com.google.common.base.Objects;
 public class DummyItem {
     private final String title;
     private final String subTitle;
+    private final String timestamp;
 
-    private DummyItem(String title, String subTitle) {
+    private DummyItem(String title, String subTitle, String timestamp) {
         this.title = title;
         this.subTitle = subTitle;
+        this.timestamp = timestamp;
     }
 
     public String getTitle() {
@@ -17,6 +19,10 @@ public class DummyItem {
 
     public String getSubTitle() {
         return subTitle;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
     }
 
     public static Builder createBuilder() {
@@ -51,6 +57,7 @@ public class DummyItem {
     public static class Builder {
         private String title;
         private String subTitle;
+        private String timestamp;
 
         public Builder setTitle(String title) {
             this.title = title;
@@ -62,8 +69,13 @@ public class DummyItem {
             return this;
         }
 
+        public Builder setTimestamp(String timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
         public DummyItem build() {
-            return new DummyItem(title, subTitle);
+            return new DummyItem(title, subTitle, timestamp);
         }
     }
 

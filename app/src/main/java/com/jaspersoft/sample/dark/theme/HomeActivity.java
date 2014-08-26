@@ -10,7 +10,7 @@ public class HomeActivity extends Activity {
 
     @Click
     final void showRepositories() {
-
+        RepositoriesActivity_.intent(this).start();
     }
 
     @Click

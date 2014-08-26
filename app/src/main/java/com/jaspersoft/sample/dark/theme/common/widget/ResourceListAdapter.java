@@ -31,7 +31,9 @@ public class ResourceListAdapter extends ArrayAdapter<DummyItem> {
         DummyItem item = getItem(position);
         itemView.setTitle(item.getTitle());
         itemView.setSubTitle(item.getSubTitle());
-
+        if (mResourceType == ResourceType.FOLDER) {
+            itemView.setTimeTamp(item.getTimestamp());
+        }
         return itemView;
     }
 

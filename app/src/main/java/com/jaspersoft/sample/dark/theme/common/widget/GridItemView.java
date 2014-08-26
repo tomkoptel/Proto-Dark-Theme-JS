@@ -2,6 +2,7 @@ package com.jaspersoft.sample.dark.theme.common.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.ViewStub;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -20,9 +21,13 @@ public class GridItemView extends FrameLayout {
     protected TextView mTitleTxt;
     @ViewById(android.R.id.text2)
     protected TextView mSubTitle;
+    @ViewById(R.id.timestampStub)
+    protected ViewStub mTimestampStub;
+
+    protected TextView mTimestampTxt;
+
     @DimensionPixelSizeRes(R.dimen.grid_item_height)
     protected int mHeight;
-
 
     public GridItemView(Context context) {
         this(context, null);
@@ -50,6 +55,15 @@ public class GridItemView extends FrameLayout {
     public void setSubTitle(CharSequence subTitle) {
         if (mSubTitle != null) {
             mSubTitle.setText(subTitle);
+        }
+    }
+
+    public void setTimeTamp(CharSequence timestamp) {
+        if (mTimestampStub != null) {
+            if (mTimestampTxt == null) {
+                mTimestampTxt = (TextView) mTimestampStub.inflate();
+            }
+            mTimestampTxt.setText(timestamp);
         }
     }
 

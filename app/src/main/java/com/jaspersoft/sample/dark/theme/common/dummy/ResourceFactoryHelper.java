@@ -15,6 +15,9 @@ public class ResourceFactoryHelper {
             case REPORT:
                 adapter.addAll(DummyFactory.REPORT_ITEMS);
                 break;
+            case FOLDER:
+                adapter.addAll(DummyFactory.FOLDER_ITEMS);
+                break;
         }
     }
 

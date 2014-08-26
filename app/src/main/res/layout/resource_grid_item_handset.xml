@@ -34,6 +34,14 @@
                 android:layout_alignParentTop="true"
                 tools:text="Large Text" />
 
+            <ViewStub
+                android:id="@+id/timestampStub"
+                android:layout_below="@android:id/text1"
+                android:inflatedId="@+id/timestamp"
+                android:layout="@layout/resource_timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
         </RelativeLayout>
 
     </LinearLayout>

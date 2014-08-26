@@ -2,6 +2,7 @@ package com.jaspersoft.sample.dark.theme.common.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.ViewStub;
 import android.widget.AbsListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,6 +21,11 @@ public class ListItemView extends RelativeLayout {
     protected TextView mTitleTxt;
     @ViewById(android.R.id.text2)
     protected TextView mSubTitle;
+    @ViewById(R.id.timestampStub)
+    protected ViewStub mTimestampStub;
+
+    protected TextView mTimestampTxt;
+
     @DimensionPixelSizeRes(R.dimen.list_item_height)
     protected int mHeight;
 
@@ -48,6 +54,15 @@ public class ListItemView extends RelativeLayout {
 
     public void setSubTitle(CharSequence subTitle) {
         mSubTitle.setText(subTitle);
+    }
+
+    public void setTimeTamp(CharSequence timestamp) {
+        if (mTimestampStub != null) {
+            if (mTimestampTxt == null) {
+                mTimestampTxt = (TextView) mTimestampStub.inflate();
+            }
+            mTimestampTxt.setText(timestamp);
+        }
     }
 
 }

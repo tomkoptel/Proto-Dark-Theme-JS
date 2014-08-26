@@ -17,6 +17,7 @@
         android:layout_marginTop="8dp"
         android:textColor="@color/list_label_light_grey"
         android:ellipsize="end"
+        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/image"
@@ -29,11 +30,23 @@
         android:layout_marginBottom="8dp"
         android:textColor="@color/list_label_grey"
         android:ellipsize="end"
+        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_below="@android:id/text1"
         android:layout_toEndOf="@+id/image"
         android:layout_toRightOf="@+id/image"
         tools:text="Small Text" />
 
+    <ViewStub
+        android:id="@+id/timestampStub"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_toLeftOf="@android:id/text1"
+        android:inflatedId="@+id/timestamp"
+        android:layout="@layout/resource_timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </merge>
