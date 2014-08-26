@@ -28,4 +28,9 @@ public class HomeActivity extends Activity {
         SavedItemsActivity_.intent(this).start();
     }
 
+    @Click
+    final void showServers() {
+        ServerProfilesActivity_.intent(this).start();
+    }
+
 }

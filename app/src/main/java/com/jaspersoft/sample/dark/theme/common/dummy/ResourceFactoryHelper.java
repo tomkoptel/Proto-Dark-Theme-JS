@@ -36,13 +36,17 @@ public class ResourceFactoryHelper {
             items.addAll(DummyFactory.SAVED_ITEMS);
         }
 
+        if ((typeFlag & ResourceType.SERVER.getFlag()) == ResourceType.SERVER.getFlag()) {
+            items.addAll(DummyFactory.SERVER_ITEMS);
+        }
+
         if (shuffle) {
             long seed = System.nanoTime();
             Collections.shuffle(items, new Random(seed));
         }
 
         if (size > 0) {
-            return new ArrayList<>(items.subList(0, size - 1));
+            return new ArrayList<>(items.subList(0, size));
         }
 
         return items;
