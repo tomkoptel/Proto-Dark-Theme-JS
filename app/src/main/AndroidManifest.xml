@@ -20,22 +20,27 @@
 
         <activity
             android:name=".RepositoriesActivity_"
+            android:icon="@drawable/ic_launcher_jaspermobile"
             android:label="@string/title_activity_repositories"/>
 
         <activity
             android:name=".LibrariesActivity_"
+            android:icon="@drawable/ic_launcher_jaspermobile"
             android:label="@string/title_activity_libraries"/>
 
         <activity
             android:name=".FavoritesActivity_"
+            android:icon="@drawable/ic_launcher_jaspermobile"
             android:label="@string/title_activity_favorites"/>
 
         <activity
             android:name=".SavedItemsActivity_"
+            android:icon="@drawable/ic_launcher_jaspermobile"
             android:label="@string/title_activity_saved_items"/>
 
         <activity
             android:name=".ServerProfilesActivity_"
+            android:icon="@drawable/ic_launcher_jaspermobile"
             android:label="@string/title_activity_server_profiles"/>
 
     </application>
