@@ -1,16 +1,19 @@
 package com.jaspersoft.sample.dark.theme.common.dummy;
 
 import com.google.common.base.Objects;
+import com.jaspersoft.sample.dark.theme.ResourceType;
 
 public class DummyItem {
     private final String title;
     private final String subTitle;
     private final String timestamp;
+    private final ResourceType type;
 
-    private DummyItem(String title, String subTitle, String timestamp) {
+    private DummyItem(String title, String subTitle, String timestamp, ResourceType type) {
         this.title = title;
         this.subTitle = subTitle;
         this.timestamp = timestamp;
+        this.type = type;
     }
 
     public String getTitle() {
@@ -25,8 +28,12 @@ public class DummyItem {
         return timestamp;
     }
 
-    public static Builder createBuilder() {
-        return new Builder();
+    public ResourceType getType() {
+        return type;
+    }
+
+    public static Builder createBuilder(ResourceType type) {
+        return new Builder(type);
     }
 
     @Override
@@ -58,6 +65,11 @@ public class DummyItem {
         private String title;
         private String subTitle;
         private String timestamp;
+        private ResourceType type;
+
+        public Builder(ResourceType resourceType) {
+            type = resourceType;
+        }
 
         public Builder setTitle(String title) {
             this.title = title;
@@ -74,8 +86,13 @@ public class DummyItem {
             return this;
         }
 
+        public Builder setType(ResourceType type) {
+            this.type = type;
+            return this;
+        }
+
         public DummyItem build() {
-            return new DummyItem(title, subTitle, timestamp);
+            return new DummyItem(title, subTitle, timestamp, type);
         }
     }
 

@@ -7,7 +7,6 @@ import android.widget.AbsListView;
 import android.widget.TextView;
 
 import com.jaspersoft.sample.dark.theme.R;
-import com.jaspersoft.sample.dark.theme.ResourceType;
 import com.jaspersoft.sample.dark.theme.common.dummy.ResourceFactoryHelper;
 import com.jaspersoft.sample.dark.theme.common.widget.ResourceGridAdapter;
 
@@ -20,15 +19,17 @@ import org.androidannotations.annotations.ViewById;
 public class ResourceGridFragment extends Fragment {
 
     @FragmentArg
-    protected ResourceType resourceType;
+    protected int resourceFlag;
+    @FragmentArg
+    protected int size;
+    @FragmentArg
+    protected boolean shuffle;
 
     @ViewById(android.R.id.list)
     protected AbsListView mGridView;
 
     @Bean
     protected ResourceGridAdapter mAdapter;
-    @Bean
-    protected ResourceFactoryHelper mResourceFactory;
 
     public ResourceGridFragment() {
     }
@@ -38,9 +39,14 @@ public class ResourceGridFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         if (savedInstanceState == null) {
-            mAdapter.setResourceType(resourceType);
             mGridView.setAdapter(mAdapter);
-            mResourceFactory.populateAdapter(mAdapter, resourceType);
+            mAdapter.addAll(
+                    ResourceFactoryHelper.create()
+                            .setTypeFlag(resourceFlag)
+                            .setSize(size)
+                            .setShuffle(shuffle)
+                            .populate()
+            );
         }
     }
 

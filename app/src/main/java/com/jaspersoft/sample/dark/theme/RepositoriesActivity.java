@@ -25,9 +25,10 @@ public class RepositoriesActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mStateHelper.setResourceFlag(ResourceType.FOLDER.getFlag());
+        mStateHelper.setSize(10);
         mStateHelper.restoreState(savedInstanceState);
-        mStateHelper.switchViewStates(
-                getFragmentManager(), ResourceType.FOLDER);
+        mStateHelper.switchViewStates(getFragmentManager());
 
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {
@@ -51,8 +52,7 @@ public class RepositoriesActivity extends Activity {
     final void switchLayout(MenuItem item) {
         mStateHelper.toggleIconState(item);
         invalidateOptionsMenu();
-        mStateHelper.switchViewStates(
-                getFragmentManager(), ResourceType.FOLDER);
+        mStateHelper.switchViewStates(getFragmentManager());
     }
 
     @Override

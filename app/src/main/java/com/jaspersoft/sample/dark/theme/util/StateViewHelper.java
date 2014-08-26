@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.jaspersoft.sample.dark.theme.R;
-import com.jaspersoft.sample.dark.theme.ResourceType;
 import com.jaspersoft.sample.dark.theme.common.ResourceGridFragment_;
 import com.jaspersoft.sample.dark.theme.common.ResourceListFragment_;
 
@@ -22,6 +21,10 @@ public class StateViewHelper {
 
     protected int mViewState = SHOW_GRID;
 
+    protected int resourceFlag;
+    protected int size;
+    protected boolean shuffle;
+
     public void toggleIconState(MenuItem item) {
         if (mViewState == SHOW_GRID) {
             mViewState = SHOW_LIST;
@@ -32,14 +35,20 @@ public class StateViewHelper {
         }
     }
 
-    public void switchViewStates(FragmentManager manager, ResourceType type) {
+    public void switchViewStates(FragmentManager manager) {
         Fragment fragment;
         if (mViewState == SHOW_GRID) {
             fragment = ResourceListFragment_.builder()
-                    .resourceType(type).build();
+                    .resourceFlag(resourceFlag)
+                    .size(size)
+                    .shuffle(shuffle)
+                    .build();
         } else {
             fragment = ResourceGridFragment_.builder()
-                    .resourceType(type).build();
+                    .resourceFlag(resourceFlag)
+                    .size(size)
+                    .shuffle(shuffle)
+                    .build();
         }
         manager.beginTransaction()
                 .setCustomAnimations(
@@ -65,5 +74,17 @@ public class StateViewHelper {
         } else {
             item.setIcon(R.drawable.ic_collections_view_as_list);
         }
+    }
+
+    public void setResourceFlag(int resourceFlag) {
+        this.resourceFlag = resourceFlag;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public void setShuffle(boolean shuffle) {
+        this.shuffle = shuffle;
     }
 }

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jaspersoft.sample.dark.theme.R;
-import com.jaspersoft.sample.dark.theme.ResourceType;
 import com.jaspersoft.sample.dark.theme.common.dummy.ResourceFactoryHelper;
 import com.jaspersoft.sample.dark.theme.common.widget.ResourceListAdapter;
 
@@ -19,12 +18,14 @@ import org.androidannotations.annotations.FragmentArg;
 public class ResourceListFragment extends ListFragment {
 
     @FragmentArg
-    protected ResourceType resourceType;
+    protected int resourceFlag;
+    @FragmentArg
+    protected int size;
+    @FragmentArg
+    protected boolean shuffle;
 
     @Bean
     protected ResourceListAdapter mAdapter;
-    @Bean
-    protected ResourceFactoryHelper mResourceFactory;
 
     public ResourceListFragment() {
     }
@@ -39,9 +40,14 @@ public class ResourceListFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
 
         if (savedInstanceState == null) {
-            mAdapter.setResourceType(resourceType);
             setListAdapter(mAdapter);
-            mResourceFactory.populateAdapter(mAdapter, resourceType);
+            mAdapter.addAll(
+                    ResourceFactoryHelper.create()
+                            .setTypeFlag(resourceFlag)
+                            .setSize(size)
+                            .setShuffle(shuffle)
+                            .populate()
+            );
         }
     }
 

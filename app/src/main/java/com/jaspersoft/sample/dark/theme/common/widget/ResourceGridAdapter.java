@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-import com.google.common.base.Preconditions;
 import com.jaspersoft.sample.dark.theme.ResourceType;
 import com.jaspersoft.sample.dark.theme.common.dummy.DummyItem;
 
@@ -13,8 +12,6 @@ import org.androidannotations.annotations.EBean;
 
 @EBean
 public class ResourceGridAdapter extends ArrayAdapter<DummyItem> {
-
-    private ResourceType mResourceType;
 
     public ResourceGridAdapter(Context context) {
         super(context, 0);
@@ -31,16 +28,11 @@ public class ResourceGridAdapter extends ArrayAdapter<DummyItem> {
         DummyItem item = getItem(position);
         itemView.setTitle(item.getTitle());
         itemView.setSubTitle(item.getSubTitle());
-        if (mResourceType == ResourceType.FOLDER) {
+        if (item.getType() == ResourceType.FOLDER) {
             itemView.setTimeTamp(item.getTimestamp());
         }
 
         return itemView;
-    }
-
-    public void setResourceType(ResourceType type) {
-        Preconditions.checkNotNull(type);
-        mResourceType = type;
     }
 
 }
