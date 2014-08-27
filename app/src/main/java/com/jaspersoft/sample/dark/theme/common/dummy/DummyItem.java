@@ -11,13 +11,15 @@ public class DummyItem implements Parcelable {
     private final String subTitle;
     private final String timestamp;
     private final String fileSize;
+    private final int image;
     private final ResourceType type;
 
-    private DummyItem(String title, String subTitle, String timestamp, String fileSize, ResourceType type) {
+    private DummyItem(String title, String subTitle, String timestamp, String fileSize, int image, ResourceType type) {
         this.title = title;
         this.subTitle = subTitle;
         this.timestamp = timestamp;
         this.fileSize = fileSize;
+        this.image = image;
         this.type = type;
     }
 
@@ -39,6 +41,10 @@ public class DummyItem implements Parcelable {
 
     public ResourceType getType() {
         return type;
+    }
+
+    public int getImage() {
+        return image;
     }
 
     public static Builder createBuilder(ResourceType type) {
@@ -77,6 +83,7 @@ public class DummyItem implements Parcelable {
 
     public static class Builder {
         private String title;
+        private int image;
         private String subTitle;
         private String timestamp;
         private String fileSize;
@@ -111,10 +118,16 @@ public class DummyItem implements Parcelable {
             return this;
         }
 
+        public Builder setImage(int image) {
+            this.image = image;
+            return this;
+        }
+
         public DummyItem build() {
-            return new DummyItem(title, subTitle, timestamp, fileSize, type);
+            return new DummyItem(title, subTitle, timestamp, fileSize, image, type);
         }
     }
+
 
     @Override
     public int describeContents() {
@@ -127,6 +140,7 @@ public class DummyItem implements Parcelable {
         dest.writeString(this.subTitle);
         dest.writeString(this.timestamp);
         dest.writeString(this.fileSize);
+        dest.writeInt(this.image);
         dest.writeInt(this.type == null ? -1 : this.type.ordinal());
     }
 
@@ -135,11 +149,12 @@ public class DummyItem implements Parcelable {
         this.subTitle = in.readString();
         this.timestamp = in.readString();
         this.fileSize = in.readString();
+        this.image = in.readInt();
         int tmpType = in.readInt();
         this.type = tmpType == -1 ? null : ResourceType.values()[tmpType];
     }
 
-    public static final Parcelable.Creator<DummyItem> CREATOR = new Parcelable.Creator<DummyItem>() {
+    public static final Creator<DummyItem> CREATOR = new Creator<DummyItem>() {
         public DummyItem createFromParcel(Parcel source) {
             return new DummyItem(source);
         }

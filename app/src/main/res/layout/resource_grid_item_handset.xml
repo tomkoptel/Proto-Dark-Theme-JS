@@ -9,11 +9,12 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@android:id/icon"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            android:background="@drawable/js_gradient" />
+            android:layout_weight="2"
+            android:scaleType="fitXY"
+            tools:background="@drawable/js_gradient" />
 
         <RelativeLayout
             style="@style/grid.item.context"
@@ -24,31 +25,29 @@
             <TextView
                 android:id="@android:id/text1"
                 style="@style/grid.item.title"
-                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
                 android:textColor="@color/js_grey"
                 android:ellipsize="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
                 tools:text="Large Text" />
 
-            <ViewStub
-                android:id="@+id/timestampStub"
-                android:layout_below="@android:id/text1"
-                android:inflatedId="@+id/timestamp"
-                android:layout="@layout/resource_metadata"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <!--<ViewStub-->
+                <!--android:id="@+id/timestampStub"-->
+                <!--android:layout_below="@android:id/text1"-->
+                <!--android:inflatedId="@+id/timestamp"-->
+                <!--android:layout="@layout/resource_metadata"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
 
-            <ViewStub
-                android:id="@+id/miscStub"
-                android:layout_below="@android:id/text1"
-                android:inflatedId="@+id/misc"
-                android:layout="@layout/resource_metadata"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <!--<ViewStub-->
+                <!--android:id="@+id/miscStub"-->
+                <!--android:layout_below="@android:id/text1"-->
+                <!--android:inflatedId="@+id/misc"-->
+                <!--android:layout="@layout/resource_metadata"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
 
         </RelativeLayout>
 

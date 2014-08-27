@@ -1,7 +1,7 @@
 package com.jaspersoft.sample.dark.theme;
 
 public enum ResourceType {
-    REPORT(0x1), FOLDER(0x2), DASHBOARD(0x4), SAVED(0x8), SERVER(0x0);
+    REPORT(0x1), FOLDER(0x2), DASHBOARD(0x4), SAVED(0x8), SERVER(0x10);
 
     private final int mFlag;
 

@@ -26,6 +26,7 @@ public class ResourceListAdapter extends ArrayAdapter<DummyItem> {
         }
 
         DummyItem item = getItem(position);
+        itemView.setImageIcon(item.getImage());
         itemView.setTitle(item.getTitle());
         itemView.setSubTitle(item.getSubTitle());
         if (item.getType() == ResourceType.FOLDER) {

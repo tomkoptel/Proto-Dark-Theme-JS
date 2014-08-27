@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.ViewStub;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jaspersoft.sample.dark.theme.R;
@@ -17,6 +18,8 @@ import org.androidannotations.annotations.res.DimensionPixelSizeRes;
 @EViewGroup(R.layout.resource_grid_item)
 public class GridItemView extends FrameLayout {
 
+    @ViewById(android.R.id.icon)
+    protected ImageView mImageIcon;
     @ViewById(android.R.id.text1)
     protected TextView mTitleTxt;
     @ViewById(android.R.id.text2)
@@ -29,8 +32,8 @@ public class GridItemView extends FrameLayout {
     protected TextView mTimestampTxt;
     protected TextView mMiscTxt;
 
-    @DimensionPixelSizeRes(R.dimen.grid_item_height)
-    protected int mHeight;
+    @DimensionPixelSizeRes(R.dimen.grid_item_size)
+    protected int mSize;
 
     public GridItemView(Context context) {
         this(context, null);
@@ -46,8 +49,7 @@ public class GridItemView extends FrameLayout {
 
     @AfterViews
     final void init() {
-        AbsListView.LayoutParams params = new AbsListView.LayoutParams(
-                AbsListView.LayoutParams.MATCH_PARENT, mHeight);
+        AbsListView.LayoutParams params = new AbsListView.LayoutParams(mSize, mSize);
         setLayoutParams(params);
     }
 
@@ -77,6 +79,10 @@ public class GridItemView extends FrameLayout {
             }
             mMiscTxt.setText(misc);
         }
+    }
+
+    public void setImageIcon(int image) {
+        mImageIcon.setImageResource(image);
     }
 
 }

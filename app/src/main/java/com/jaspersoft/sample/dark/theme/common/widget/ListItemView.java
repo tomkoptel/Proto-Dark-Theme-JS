@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.ViewStub;
 import android.widget.AbsListView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,6 +18,8 @@ import org.androidannotations.annotations.res.DimensionPixelSizeRes;
 @EViewGroup(R.layout.resource_list_item)
 public class ListItemView extends RelativeLayout {
 
+    @ViewById(android.R.id.icon)
+    protected ImageView mImageIcon;
     @ViewById(android.R.id.text1)
     protected TextView mTitleTxt;
     @ViewById(android.R.id.text2)
@@ -65,6 +68,11 @@ public class ListItemView extends RelativeLayout {
                 mTimestampTxt = (TextView) mTimestampStub.inflate();
             }
             mTimestampTxt.setText(timestamp);
+
+            RelativeLayout.LayoutParams params = (LayoutParams) mTitleTxt.getLayoutParams();
+            params.addRule(START_OF, mTimestampTxt.getId());
+            params.addRule(LEFT_OF, mTimestampTxt.getId());
+            mTitleTxt.setLayoutParams(params);
         }
     }
 
@@ -80,6 +88,10 @@ public class ListItemView extends RelativeLayout {
             params.addRule(RelativeLayout.START_OF, mMiscTxt.getId());
             mSubTitle.setLayoutParams(params);
         }
+    }
+
+    public void setImageIcon(int image) {
+        mImageIcon.setImageResource(image);
     }
 
 }

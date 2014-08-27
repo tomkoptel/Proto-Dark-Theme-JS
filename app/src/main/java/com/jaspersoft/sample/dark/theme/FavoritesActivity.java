@@ -27,11 +27,11 @@ public class FavoritesActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState == null) {
-            int flag = ResourceType.REPORT.getFlag() | ResourceType.DASHBOARD.getFlag();
+            int flag = ResourceType.REPORT.getFlag() | ResourceType.DASHBOARD.getFlag() | ResourceType.FOLDER.getFlag();
             mStateHelper.setItems(
                     ResourceFactoryHelper.create()
                             .typeFlag(flag)
-                            .size(5)
+                            .size(10)
                             .shuffle(true)
                             .populate()
             );

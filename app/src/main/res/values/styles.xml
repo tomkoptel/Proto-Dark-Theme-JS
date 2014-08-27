@@ -12,7 +12,6 @@
     <style name="list.item"/>
 
     <style name="list.item.layout">
-
         <item name="android:background">@drawable/ab_stacked_solid_box</item>
     </style>
 
@@ -36,7 +35,8 @@
     <style name="grid.item"/>
 
     <style name="grid.layout">
-        <item name="android:numColumns">2</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
     </style>
 
     <style name="grid.item.layout">
@@ -46,12 +46,12 @@
     </style>
 
     <style name="grid.item.context">
-        <item name="android:padding">16dp</item>
+        <item name="android:padding">8dp</item>
     </style>
 
     <style name="grid.item.title">
-        <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
-        <item name="android:maxLines">1</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmallInverse</item>
+        <item name="android:maxLines">2</item>
     </style>
 
     <style name="grid.item.subTitle">

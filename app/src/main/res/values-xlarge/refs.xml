@@ -1,4 +1,4 @@
 <resources>
-    <item name="resource_grid_item" type="layout">@layout/resource_grid_item_tablet</item>
+    <item name="resource_grid_item" type="layout">@layout/resource_grid_item_handset</item>
 
 </resources>
