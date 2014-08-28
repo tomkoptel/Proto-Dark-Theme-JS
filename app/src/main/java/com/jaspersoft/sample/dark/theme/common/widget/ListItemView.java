@@ -1,6 +1,7 @@
 package com.jaspersoft.sample.dark.theme.common.widget;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.ViewStub;
 import android.widget.AbsListView;
@@ -70,7 +71,9 @@ public class ListItemView extends RelativeLayout {
             mTimestampTxt.setText(timestamp);
 
             RelativeLayout.LayoutParams params = (LayoutParams) mTitleTxt.getLayoutParams();
-            params.addRule(START_OF, mTimestampTxt.getId());
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                params.addRule(START_OF, mTimestampTxt.getId());
+            }
             params.addRule(LEFT_OF, mTimestampTxt.getId());
             mTitleTxt.setLayoutParams(params);
         }
@@ -84,8 +87,10 @@ public class ListItemView extends RelativeLayout {
             mMiscTxt.setText(misc);
 
             RelativeLayout.LayoutParams params = (LayoutParams) mSubTitle.getLayoutParams();
-            params.addRule(RelativeLayout.LEFT_OF, mMiscTxt.getId());
-            params.addRule(RelativeLayout.START_OF, mMiscTxt.getId());
+            params.addRule(LEFT_OF, mMiscTxt.getId());
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                params.addRule(START_OF, mMiscTxt.getId());
+            }
             mSubTitle.setLayoutParams(params);
         }
     }

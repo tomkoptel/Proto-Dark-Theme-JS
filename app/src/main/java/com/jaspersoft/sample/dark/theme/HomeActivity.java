@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.api.ViewServer;
 
 @EActivity(R.layout.activity_home)
 public class HomeActivity extends Activity {
@@ -33,4 +34,21 @@ public class HomeActivity extends Activity {
         ServerProfilesActivity_.intent(this).start();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ViewServer.get(this).addWindow(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ViewServer.get(this).removeWindow(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ViewServer.get(this).setFocusedWindow(this);
+    }
 }

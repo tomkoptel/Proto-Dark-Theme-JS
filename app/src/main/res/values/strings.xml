@@ -12,5 +12,6 @@
     <string name="title_activity_server_profiles">Server Profiles</string>
     <string name="favorites">Favorites</string>
     <string name="filters">Filter</string>
+    <string name="device">handset</string>
 
 </resources>

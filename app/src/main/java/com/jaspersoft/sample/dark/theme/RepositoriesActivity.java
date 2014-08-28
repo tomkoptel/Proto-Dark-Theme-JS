@@ -14,6 +14,7 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.api.ViewServer;
 
 
 @EActivity
@@ -26,7 +27,6 @@ public class RepositoriesActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (savedInstanceState == null) {
             mStateHelper.setItems(
                     ResourceFactoryHelper.create()
@@ -70,4 +70,21 @@ public class RepositoriesActivity extends Activity {
         mStateHelper.saveState(outState);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ViewServer.get(this).addWindow(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ViewServer.get(this).removeWindow(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ViewServer.get(this).setFocusedWindow(this);
+    }
 }
