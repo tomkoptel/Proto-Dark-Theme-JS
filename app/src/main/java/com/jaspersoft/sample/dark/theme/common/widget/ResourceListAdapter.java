@@ -1,24 +1,22 @@
 package com.jaspersoft.sample.dark.theme.common.widget;
 
-import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
 import com.jaspersoft.sample.dark.theme.ResourceType;
 import com.jaspersoft.sample.dark.theme.common.dummy.DummyItem;
 
-import org.androidannotations.annotations.EBean;
+import java.util.List;
 
-@EBean
-public class ResourceListAdapter extends ArrayAdapter<DummyItem> {
+public class ResourceListAdapter extends ResourceMultiChoiceBaseAdapter  {
 
-    public ResourceListAdapter(Context context) {
-        super(context, 0);
+    public ResourceListAdapter(Bundle savedInstanceState, int actionMenu, List<DummyItem> items) {
+        super(savedInstanceState, actionMenu, items);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getViewImpl(int position, View convertView, ViewGroup parent) {
         ListItemView itemView = (ListItemView) convertView;
 
         if (itemView == null) {

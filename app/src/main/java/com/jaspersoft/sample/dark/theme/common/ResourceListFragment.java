@@ -10,7 +10,6 @@ import com.jaspersoft.sample.dark.theme.R;
 import com.jaspersoft.sample.dark.theme.common.dummy.DummyItem;
 import com.jaspersoft.sample.dark.theme.common.widget.ResourceListAdapter;
 
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
 
@@ -21,9 +20,10 @@ public class ResourceListFragment extends ListFragment {
 
     @FragmentArg
     protected ArrayList<DummyItem> items;
+    @FragmentArg
+    protected int actionMenu;
 
-    @Bean
-    protected ResourceListAdapter mAdapter;
+    private ResourceListAdapter mAdapter;
 
     public ResourceListFragment() {
     }
@@ -37,10 +37,21 @@ public class ResourceListFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        mAdapter = new ResourceListAdapter(savedInstanceState, actionMenu, items);
+        mAdapter.setAdapterView(getListView());
+
         if (savedInstanceState == null) {
             setListAdapter(mAdapter);
-            mAdapter.addAll(items);
+        } else {
+            setListAdapter(null);
+            setListAdapter(mAdapter);
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mAdapter.save(outState);
     }
 
 }

@@ -36,6 +36,7 @@ public class FavoritesActivity extends Activity {
                             .shuffle(true)
                             .populate()
             );
+            mStateHelper.setActionMenu(R.menu.menu_view_favorite);
         }
 
         mStateHelper.restoreState(savedInstanceState);

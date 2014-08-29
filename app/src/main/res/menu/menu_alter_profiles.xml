@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_remove_item"
+        android:icon="@drawable/ic_content_discard"
+        android:showAsAction="always"
+        android:title="@string/menu_remove_item" />
+    <item
+        android:id="@+id/menu_edit_item"
+        android:icon="@drawable/ic_content_edit"
+        android:showAsAction="always"
+        android:title="@string/menu_rename_item" />
+    <item
+        android:id="@+id/menu_connect_item"
+        android:icon="@drawable/ic_connect"
+        android:showAsAction="always"
+        android:title="@string/menu_connect_item" />
+
+</menu>

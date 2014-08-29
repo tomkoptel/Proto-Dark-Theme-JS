@@ -24,6 +24,7 @@ public class StateViewHelper {
     private static final int SHOW_LIST = 2;
 
     protected int mViewState = SHOW_GRID;
+    private int actionMenu;
 
     private ArrayList<DummyItem> items;
 
@@ -41,10 +42,12 @@ public class StateViewHelper {
         Fragment fragment;
         if (mViewState == SHOW_GRID) {
             fragment = ResourceListFragment_.builder()
-                    .items(items).build();
+                    .items(items).actionMenu(actionMenu)
+                    .build();
         } else {
             fragment = ResourceGridFragment_.builder()
-                    .items(items).build();
+                    .items(items).actionMenu(actionMenu)
+                    .build();
         }
         manager.beginTransaction()
                 .setCustomAnimations(
@@ -78,4 +81,7 @@ public class StateViewHelper {
         this.items = items;
     }
 
+    public void setActionMenu(int actionMenu) {
+        this.actionMenu = actionMenu;
+    }
 }

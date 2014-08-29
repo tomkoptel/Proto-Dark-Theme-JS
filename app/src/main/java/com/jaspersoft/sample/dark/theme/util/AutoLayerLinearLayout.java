@@ -81,8 +81,8 @@ public class AutoLayerLinearLayout extends LinearLayout {
         super.drawableStateChanged();
         if (mForegroundSelector != null) {
             mForegroundSelector.setState(getDrawableState());
+            invalidate();
         }
-        invalidate();
     }
 
     @Override
@@ -96,7 +96,9 @@ public class AutoLayerLinearLayout extends LinearLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        mForegroundSelector.draw(canvas);
+        if (mForegroundSelector != null) {
+            mForegroundSelector.draw(canvas);
+        }
     }
 
     @Override
@@ -109,7 +111,11 @@ public class AutoLayerLinearLayout extends LinearLayout {
 
     @Override
     protected boolean verifyDrawable(Drawable who) {
-        return super.verifyDrawable(who) || (who == mForegroundSelector);
+        if (mForegroundSelector == null) {
+            return super.verifyDrawable(who);
+        } else {
+            return super.verifyDrawable(who) || (who == mForegroundSelector);
+        }
     }
 
 }

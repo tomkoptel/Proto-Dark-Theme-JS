@@ -22,6 +22,8 @@ public class ResourceGridFragment extends Fragment {
 
     @FragmentArg
     protected ArrayList<DummyItem> items;
+    @FragmentArg
+    protected int actionMenu;
 
     @ViewById(android.R.id.list)
     protected AbsListView mGridView;

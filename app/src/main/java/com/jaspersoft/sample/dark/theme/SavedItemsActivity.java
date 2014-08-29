@@ -35,6 +35,7 @@ public class SavedItemsActivity extends Activity {
                             .shuffle(true)
                             .populate()
             );
+            mStateHelper.setActionMenu(R.menu.menu_alter_saved_items);
         }
 
         mStateHelper.restoreState(savedInstanceState);

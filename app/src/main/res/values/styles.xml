@@ -5,6 +5,11 @@
         <item name="android:windowBackground">@drawable/ic_resources_background</item>
         <item name="listLayoutStyle">@style/list.item.layout</item>
         <item name="gridLayoutStyle">@style/grid.item.layout</item>
+        <item name="multiChoiceAdapterStyle">@style/MultiChoiceAdapter</item>
+    </style>
+
+    <style name="MultiChoiceAdapter">
+        <item name="itemClickInActionMode">selectItem</item>
     </style>
 
     <style name="list"/>
@@ -12,7 +17,7 @@
     <style name="list.item"/>
 
     <style name="list.item.layout">
-        <item name="android:background">@drawable/ab_stacked_solid_box</item>
+        <item name="android:background">@drawable/custom_list_item_bg</item>
     </style>
 
     <style name="list.item.title">

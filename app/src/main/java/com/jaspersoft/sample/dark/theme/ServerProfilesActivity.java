@@ -34,6 +34,7 @@ public class ServerProfilesActivity extends Activity {
                             .size(2)
                             .populate()
             );
+            mStateHelper.setActionMenu(R.menu.menu_alter_profiles);
         }
 
         mStateHelper.restoreState(savedInstanceState);

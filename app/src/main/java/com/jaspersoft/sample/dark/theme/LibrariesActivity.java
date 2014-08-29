@@ -34,6 +34,7 @@ public class LibrariesActivity extends Activity {
                             .size(10)
                             .populate()
             );
+            mStateHelper.setActionMenu(R.menu.menu_add_favorites);
         }
 
         mStateHelper.restoreState(savedInstanceState);

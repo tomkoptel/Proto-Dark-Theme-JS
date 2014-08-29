@@ -13,5 +13,12 @@
     <string name="favorites">Favorites</string>
     <string name="filters">Filter</string>
     <string name="device">handset</string>
+    <string name="menu_add_favorite">Add to Favorites</string>
+    <string name="menu_remove_item">Remove item</string>
+    <string name="menu_rename_item">Rename item</string>
+    <string name="menu_edit_item">Edit item</string>
+    <string name="menu_connect_item">Connect Server</string>
+    <string name="menu_run_item">Run item</string>
+    <string name="selected">%d selected</string>
 
 </resources>

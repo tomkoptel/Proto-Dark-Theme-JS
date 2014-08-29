@@ -34,6 +34,7 @@ public class RepositoriesActivity extends Activity {
                             .size(15)
                             .populate()
             );
+            mStateHelper.setActionMenu(R.menu.menu_add_favorites);
         }
 
         mStateHelper.restoreState(savedInstanceState);
@@ -43,6 +44,11 @@ public class RepositoriesActivity extends Activity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    @Override
+    public void invalidateOptionsMenu() {
+        super.invalidateOptionsMenu();
     }
 
     @OptionsItem(android.R.id.home)

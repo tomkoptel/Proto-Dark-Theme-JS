@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jaspersoft.sample.dark.theme.R;
+import com.jaspersoft.sample.dark.theme.multichoice.CheckedRelativeLayout;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EViewGroup;
@@ -17,7 +18,7 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.DimensionPixelSizeRes;
 
 @EViewGroup(R.layout.resource_list_item)
-public class ListItemView extends RelativeLayout {
+public class ListItemView extends CheckedRelativeLayout {
 
     @ViewById(android.R.id.icon)
     protected ImageView mImageIcon;
