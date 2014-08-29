@@ -5,12 +5,14 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
+import android.widget.ListView;
 
+import com.jaspersoft.sample.dark.theme.R;
 import com.squareup.spoon.Spoon;
 
 public abstract class ProtoActivityInstrumentation<T extends Activity>
         extends ActivityInstrumentationTestCase2<T> {
-    private T mActivity;
+    protected T mActivity;
     private NameUtils nameUtils;
 
     public ProtoActivityInstrumentation(Class<T> activityClass) {
@@ -62,4 +64,12 @@ public abstract class ProtoActivityInstrumentation<T extends Activity>
     }
 
     public abstract String getPageName();
+
+    protected void makeTwoFirstListItemsAccessible() {
+        ListView list = (ListView) mActivity.findViewById(android.R.id.list);
+        View firstItem = list.getChildAt(0);
+        firstItem.setId(R.id.firs_list_item);
+        View secondItem = list.getChildAt(1);
+        secondItem.setId(R.id.second_list_item);
+    }
 }

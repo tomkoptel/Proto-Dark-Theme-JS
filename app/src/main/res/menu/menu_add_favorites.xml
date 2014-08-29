@@ -6,14 +6,4 @@
         android:icon="@drawable/ic_rating_important"
         android:showAsAction="always"
         android:title="@string/menu_add_favorite"/>
-    <item
-        android:id="@+id/menu_view_details"
-        android:icon="@drawable/ic_action_about"
-        android:showAsAction="always"
-        android:title="@string/menu_add_favorite"/>
-    <item
-        android:id="@+id/menu_run"
-        android:icon="@drawable/ic_run"
-        android:showAsAction="always"
-        android:title="@string/menu_run_item"/>
 </menu>

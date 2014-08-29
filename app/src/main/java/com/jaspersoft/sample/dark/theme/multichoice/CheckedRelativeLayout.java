@@ -12,10 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Checkable;
 import android.widget.RelativeLayout;
 
-/**
- * @author Tom Koptel
- * @since 1.9
- */
 public class CheckedRelativeLayout extends RelativeLayout implements Checkable {
     private boolean mChecked;
     private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};

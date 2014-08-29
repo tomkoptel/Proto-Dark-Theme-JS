@@ -87,7 +87,7 @@ public class DummyFactory {
         for (int i = 0; i < BASE_COUNT; i++) {
             addReportItem(DummyItem.createBuilder(ResourceType.REPORT)
                             .setImage(getGreyPreviewIcon())
-                            .setTitle(i + ". Geographic Results by Segment Report")
+                            .setTitle(i + ". Geographic Report Results by Segment")
                             .setSubTitle("Sample report built on supermat data showing performance and sales data form variety of sources")
                             .build()
             );
