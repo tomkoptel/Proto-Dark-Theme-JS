@@ -56,7 +56,6 @@ apt {
     }
 }
 
-ext.androidAnnotationsVersion = '3.1-SNAPSHOT';
 
 spoon {
     debug = true
@@ -70,12 +69,20 @@ spoon {
     }
 }
 
+ext.androidAnnotationsVersion = '3.1-SNAPSHOT';
+ext.autoValueVersion = '0.2';
+
 dependencies {
     compile 'com.google.guava:guava:17.0'
 
     compile 'com.github.manuelpeinado.multichoiceadapter:multichoiceadapter:3.1.0'
+
     compile("org.androidannotations:androidannotations-api:${androidAnnotationsVersion}")
     apt "org.androidannotations:androidannotations:${androidAnnotationsVersion}"
+
+    compile 'com.google.code.findbugs:jsr305:3.0.0'
+    compile "com.github.frankiesardo:auto-parcel:${autoValueVersion}"
+    apt "com.github.frankiesardo:auto-parcel-processor:${autoValueVersion}"
 
     androidTestCompile('com.jakewharton.espresso:espresso:1.1-r3')
     androidTestCompile('com.squareup.spoon:spoon-client:1.1.0')

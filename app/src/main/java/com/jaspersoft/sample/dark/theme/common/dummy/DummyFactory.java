@@ -1,7 +1,6 @@
 package com.jaspersoft.sample.dark.theme.common.dummy;
 
 import com.jaspersoft.sample.dark.theme.R;
-import com.jaspersoft.sample.dark.theme.ResourceType;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,35 +35,28 @@ public class DummyFactory {
 
     private static void generateServers() {
         for (int i = 0; i < BASE_COUNT; i++) {
-            addServerItem(DummyItem.createBuilder(ResourceType.SERVER)
-                            .setImage(getOrangePreviewIcon())
-                            .setTitle(i + ". Server with some sample data")
-                            .setSubTitle("http://mobiledemo.jaspersoft.com/jasperserver-pro/" + i)
-                            .build()
-            );
+            String title = i + ". Server with some sample data";
+            String subTitle = "http://mobiledemo.jaspersoft.com/jasperserver-pro/" + i;
+            addServerItem(DummyItem.createServer(title, subTitle, getOrangePreviewIcon()));
         }
     }
 
     private static void generateSaved() {
         for (int i = 0; i < BASE_COUNT; i++) {
-            addSavedItem(DummyItem.createBuilder(ResourceType.SAVED)
-                            .setImage(getGreyPreviewIcon())
-                            .setTitle(i + ". Saved Report")
-                            .setSubTitle("Sample report built on supermat data showing performance and sales data form variety of sources")
-                            .setFileSzie(randInt(0, BASE_COUNT) + " KB")
-                            .build()
-            );
+            String title = i + ". Saved Report";
+            String subTitle = "Sample report built on supermat data showing performance and sales " +
+                    "data form variety of sources";
+            String fileSize = randInt(0, BASE_COUNT) + " KB";
+            addSavedItem(DummyItem.createSavedItem(title, subTitle, fileSize, getGreyPreviewIcon()));
         }
     }
 
     private static void generateDashboard() {
         for (int i = 0; i < BASE_COUNT; i++) {
-            addDashboardItem(DummyItem.createBuilder(ResourceType.DASHBOARD)
-                            .setImage(getBluePreviewIcon())
-                            .setTitle(i + ". Supermart Dashboard")
-                            .setSubTitle("Sample dashboard built on supermat data showing performance and sales data form variety of sources")
-                            .build()
-            );
+            String title = i + ". Supermart Dashboard";
+            String subTitle = "Sample dashboard built on supermat data showing performance and sales" +
+                    " data form variety of sources";
+            addDashboardItem(DummyItem.createDashboard(title, subTitle, getBluePreviewIcon()));
         }
     }
 
@@ -73,23 +65,19 @@ public class DummyFactory {
         SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy");
         for (int i = 0; i < BASE_COUNT; i++) {
             calendar.add(Calendar.DAY_OF_YEAR, (i * -1));
-            addFolderItem(DummyItem.createBuilder(ResourceType.FOLDER)
-                            .setImage(getVioletPreviewIcon())
-                            .setTitle(i + ". Folder with some content")
-                            .setSubTitle("/Folder/" + i + "/somewhere/nowhere/anywhere")
-                            .setTimestamp(sdf.format(calendar.getTime()))
-                            .build()
-            );
+            String title = i + ". Folder with some content";
+            String subTitle = "/Folder/" + i + "/somewhere/nowhere/anywhere";
+            String timestamp = sdf.format(calendar.getTime());
+            addFolderItem(DummyItem.createFolder(title, subTitle, getVioletPreviewIcon(), timestamp));
         }
     }
 
     private static void generateReport() {
         for (int i = 0; i < BASE_COUNT; i++) {
-            addReportItem(DummyItem.createBuilder(ResourceType.REPORT)
-                            .setImage(getGreyPreviewIcon())
-                            .setTitle(i + ". Geographic Report Results by Segment")
-                            .setSubTitle("Sample report built on supermat data showing performance and sales data form variety of sources")
-                            .build()
+            String title = i + ". Geographic Report Results by Segment";
+            String subTitle = "Sample report built on supermat data showing performance and sales " +
+                    "data form variety of sources";
+            addReportItem(DummyItem.createReport(title, subTitle, getGreyPreviewIcon())
             );
         }
     }

@@ -12,6 +12,7 @@ import com.squareup.spoon.Spoon;
 
 public abstract class ProtoActivityInstrumentation<T extends Activity>
         extends ActivityInstrumentationTestCase2<T> {
+    private static final long SLEEP_RATE = 400;
     protected T mActivity;
     private NameUtils nameUtils;
 
@@ -27,8 +28,10 @@ public abstract class ProtoActivityInstrumentation<T extends Activity>
     }
 
     protected void makeScreenShot(String name) throws InterruptedException {
-        Thread.sleep(400);
-        Spoon.screenshot(mActivity, nameUtils.generateName(mActivity, name));
+        if (SLEEP_RATE > 0) {
+            Thread.sleep(SLEEP_RATE);
+            Spoon.screenshot(mActivity, nameUtils.generateName(mActivity, name));
+        }
     }
 
     protected void rotate() {

@@ -26,14 +26,14 @@ public class ResourceGridAdapter extends ArrayAdapter<DummyItem> {
         }
 
         DummyItem item = getItem(position);
-        itemView.setImageIcon(item.getImage());
-        itemView.setTitle(item.getTitle());
-        itemView.setSubTitle(item.getSubTitle());
-        if (item.getType() == ResourceType.FOLDER) {
-            itemView.setTimeTamp(item.getTimestamp());
+        itemView.setImageIcon(item.image());
+        itemView.setTitle(item.title());
+        itemView.setSubTitle(item.subTitle());
+        if (item.type() == ResourceType.FOLDER) {
+            itemView.setTimeTamp(item.timesTamp());
         }
-        if (item.getType() == ResourceType.SAVED) {
-            itemView.setMisc(item.getFileSize());
+        if (item.type() == ResourceType.SAVED) {
+            itemView.setMisc(item.fileSize());
         }
 
         return itemView;
