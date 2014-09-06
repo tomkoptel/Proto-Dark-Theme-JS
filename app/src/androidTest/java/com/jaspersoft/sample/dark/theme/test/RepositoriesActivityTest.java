@@ -3,6 +3,7 @@ package com.jaspersoft.sample.dark.theme.test;
 import com.google.android.apps.common.testing.ui.espresso.Espresso;
 import com.jaspersoft.sample.dark.theme.R;
 import com.jaspersoft.sample.dark.theme.RepositoriesActivity_;
+import com.jaspersoft.sample.dark.theme.test.utils.ProtoActivityInstrumentation;
 
 import static com.google.android.apps.common.testing.ui.espresso.Espresso.onView;
 import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.click;
@@ -17,6 +18,7 @@ public class RepositoriesActivityTest extends ProtoActivityInstrumentation<Repos
 
 
     public void testFlowForRepositories() throws InterruptedException {
+        getActivity();
         onView(withId(getActionBarId())).perform(click());
 
         makeScreenShot("list");

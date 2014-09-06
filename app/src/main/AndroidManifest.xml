@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jaspersoft.sample.dark.theme">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- For espresso testing purposes, this is removed in live builds, but not in dev builds -->
+    <uses-permission android:name="android.permission.SET_ANIMATION_SCALE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -22,31 +26,37 @@
             android:name=".RepositoriesActivity_"
             android:configChanges="orientation|screenSize"
             android:icon="@drawable/ic_launcher_jaspermobile"
-            android:label="@string/title_activity_repositories"/>
+            android:label="@string/title_activity_repositories" />
 
         <activity
             android:name=".LibrariesActivity_"
             android:configChanges="orientation|screenSize|screenLayout"
             android:icon="@drawable/ic_launcher_jaspermobile"
-            android:label="@string/title_activity_libraries"/>
+            android:label="@string/title_activity_libraries" />
 
         <activity
             android:name=".FavoritesActivity_"
             android:configChanges="orientation|screenSize"
             android:icon="@drawable/ic_launcher_jaspermobile"
-            android:label="@string/title_activity_favorites"/>
+            android:label="@string/title_activity_favorites" />
 
         <activity
             android:name=".SavedItemsActivity_"
             android:configChanges="orientation|screenSize"
             android:icon="@drawable/ic_launcher_jaspermobile"
-            android:label="@string/title_activity_saved_items"/>
+            android:label="@string/title_activity_saved_items" />
 
         <activity
             android:name=".ServerProfilesActivity_"
             android:configChanges="orientation|screenSize"
             android:icon="@drawable/ic_launcher_jaspermobile"
-            android:label="@string/title_activity_server_profiles"/>
+            android:label="@string/title_activity_server_profiles" />
+
+        <activity
+            android:name=".WebViewActivity_"
+            android:configChanges="orientation|screenSize"
+            android:icon="@drawable/ic_launcher_jaspermobile"
+            android:label="Web view"/>
 
     </application>
 

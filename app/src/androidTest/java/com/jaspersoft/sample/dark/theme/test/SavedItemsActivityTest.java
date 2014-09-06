@@ -2,6 +2,7 @@ package com.jaspersoft.sample.dark.theme.test;
 
 import com.jaspersoft.sample.dark.theme.R;
 import com.jaspersoft.sample.dark.theme.SavedItemsActivity_;
+import com.jaspersoft.sample.dark.theme.test.utils.ProtoActivityInstrumentation;
 
 import static com.google.android.apps.common.testing.ui.espresso.Espresso.onView;
 import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.click;
@@ -14,6 +15,7 @@ public class SavedItemsActivityTest  extends ProtoActivityInstrumentation<SavedI
     }
 
     public void testFlowForSavedItems() throws InterruptedException {
+        getActivity();
         onView(withId(getActionBarId())).perform(click());
 
         makeScreenShot("list");

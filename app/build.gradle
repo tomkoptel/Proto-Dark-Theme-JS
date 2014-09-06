@@ -27,8 +27,8 @@ android {
         targetSdkVersion 20
         versionCode 1
         versionName "1.0"
-        testApplicationId "com.jaspersoft.sample.dark.theme.test"
-        testInstrumentationRunner "com.jaspersoft.sample.dark.theme.test.Primer"
+        testApplicationId TEST_PACKAGE_NAME
+        testInstrumentationRunner "com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner"
     }
     buildTypes {
         release {
@@ -73,7 +73,7 @@ ext.androidAnnotationsVersion = '3.1-SNAPSHOT';
 ext.autoValueVersion = '0.2';
 
 dependencies {
-    compile 'com.google.guava:guava:17.0'
+    compile 'com.google.guava:guava-base:r03'
 
     compile 'com.github.manuelpeinado.multichoiceadapter:multichoiceadapter:3.1.0'
 
@@ -87,4 +87,24 @@ dependencies {
 
     androidTestCompile('com.jakewharton.espresso:espresso:1.1-r3')
     androidTestCompile('com.squareup.spoon:spoon-client:1.1.0')
+}
+
+// Override Data in Manifest - This can be done using different Manifest files for each flavor, this way there's no need to modify the manifest
+android.applicationVariants.all { variant ->
+    if (variant.name.contains('debug')) { // Where dev is the one you'll use to run Espresso tests
+        System.out.println("Not removing the SET_ANIMATION_SCALE permission for $variant.name")
+        return
+    }
+
+    System.out.println("Removing the SET_ANIMATION_SCALE permission for $variant.name")
+    variant.processManifest.doLast {
+        copyAndReplaceText(manifestOutputFile, manifestOutputFile) {
+            def replaced = it.replace('<uses-permission android:name="android.permission.SET_ANIMATION_SCALE"/>', '');
+            if (replaced.contains('SET_ANIMATION_SCALE')) {
+                // For security, imagine an extra space is added before closing tag, then the replace would fail - TODO use regex
+                throw new RuntimeException("Don't ship with this permission! android.permission.SET_ANIMATION_SCALE")
+            }
+            replaced
+        }
+    }
 }

@@ -6,6 +6,7 @@ import android.view.View;
 import com.google.android.apps.common.testing.ui.espresso.Espresso;
 import com.jaspersoft.sample.dark.theme.LibrariesActivity_;
 import com.jaspersoft.sample.dark.theme.R;
+import com.jaspersoft.sample.dark.theme.test.utils.ProtoActivityInstrumentation;
 
 import static com.google.android.apps.common.testing.ui.espresso.Espresso.onView;
 import static com.google.android.apps.common.testing.ui.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
@@ -20,6 +21,7 @@ public class LibrariesActivityTest extends ProtoActivityInstrumentation<Librarie
     }
 
     public void testFlowForLibrariesPage() throws InterruptedException {
+        getActivity();
         onView(withId(getActionBarId())).perform(click());
         View filterView = findViewById(R.id.switchLayout);
 

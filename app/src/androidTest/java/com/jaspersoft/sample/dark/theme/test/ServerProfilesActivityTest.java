@@ -2,6 +2,7 @@ package com.jaspersoft.sample.dark.theme.test;
 
 import com.jaspersoft.sample.dark.theme.R;
 import com.jaspersoft.sample.dark.theme.ServerProfilesActivity_;
+import com.jaspersoft.sample.dark.theme.test.utils.ProtoActivityInstrumentation;
 
 import static com.google.android.apps.common.testing.ui.espresso.Espresso.onView;
 import static com.google.android.apps.common.testing.ui.espresso.action.ViewActions.click;
@@ -14,6 +15,7 @@ public class ServerProfilesActivityTest extends ProtoActivityInstrumentation<Ser
     }
 
     public void testServerProfilesFlow() throws InterruptedException {
+        getActivity();
         onView(withId(getActionBarId())).perform(click());
 
         makeScreenShot("list");

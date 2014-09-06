@@ -1,4 +1,4 @@
-package com.jaspersoft.sample.dark.theme.test;
+package com.jaspersoft.sample.dark.theme.test.utils;
 
 
 import android.app.Activity;

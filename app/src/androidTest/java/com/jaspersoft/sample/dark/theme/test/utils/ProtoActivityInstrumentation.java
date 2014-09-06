@@ -1,10 +1,11 @@
-package com.jaspersoft.sample.dark.theme.test;
+package com.jaspersoft.sample.dark.theme.test.utils;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ListView;
 
 import com.jaspersoft.sample.dark.theme.R;
@@ -12,9 +13,10 @@ import com.squareup.spoon.Spoon;
 
 public abstract class ProtoActivityInstrumentation<T extends Activity>
         extends ActivityInstrumentationTestCase2<T> {
-    private static final long SLEEP_RATE = 400;
+    private static final long SLEEP_RATE = 0;
     protected T mActivity;
     private NameUtils nameUtils;
+    private SystemAnimations systemAnimations;
 
     public ProtoActivityInstrumentation(Class<T> activityClass) {
         super(activityClass);
@@ -24,7 +26,32 @@ public abstract class ProtoActivityInstrumentation<T extends Activity>
     protected void setUp() throws Exception {
         super.setUp();
         nameUtils = new NameUtils(getPageName());
-        mActivity = getActivity();
+        systemAnimations = new SystemAnimations(getInstrumentation().getContext());
+        systemAnimations.disableAll();
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        systemAnimations.enableAll();
+        super.tearDown();
+    }
+
+    @Override
+    public T getActivity() {
+        mActivity = super.getActivity();
+        // sometimes tests failed on emulator, following approach should avoid it
+        // http://stackoverflow.com/questions/22737476/false-positives-junit-framework-assertionfailederror-edittext-is-not-found
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                mActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+                mActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+                mActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+                mActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+                mActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+            }
+        });
+        return mActivity;
     }
 
     protected void makeScreenShot(String name) throws InterruptedException {
